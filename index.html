@@ -6,17 +6,37 @@
 
 		 <style type="text/css">
 		 	
+		 	body
+		 	{
+		 		background-image: url(img/bg.jpg);
+		 		background-repeat:no-repeat;
+		 		background-size: cover;
+		 	}
+
 		 	#sayfa
 		 	{
+		 		background: ;
+		 		margin:20px;
 		 		padding:50px;
+		 		width: 75%;
+		 		height: 100%;
 		 	}
 
 		 	#ekle
 		 	{
 		 		border:none; 
 		 		padding:10px; 
-		 		background: grey; 
+		 		background: #1e90ff; 
 		 		color:white;
+		 		opacity: 0.8;
+		 		width: 100px;
+		 	}
+
+		 	#ekle:hover
+		 	{
+		 		transition: 0.3s ease-in-out;
+		 		opacity: 1;
+		 		width: 150px;
 		 	}
 
 		 	#isim
@@ -24,16 +44,33 @@
 		 		padding:10px; 
 		 		border:none; 
 		 		background:#c9c9c9;
+		 		outline-color:#1e90ff;
 		 	}
+
+		 	#isim:focus{
+			    background: white;
+			}
 
 		 	.yazi
 		 	{
 		 		padding-right:15px; font-size:22px;
 		 	}
 
+		 	#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9, #p10
+		 	{
+		 		font-size: 15px;
+		 	}
+
+		 	#p1:hover, #p2:hover, #p3:hover, #p4:hover, #p5:hover, #p6:hover, #p7:hover, #p8:hover, #p9:hover, #p10:hover
+		 	{
+		 		transition: 0.2s ease-in-out;
+		 		font-size: 25px;
+		 	}
+
 		 </style>
 
 	</head>
+
 	<body>
 		<center>
 		<div id="sayfa">
@@ -44,8 +81,8 @@
 
 			<!--- Girdi  --->
 			<label class="yazi" >Kelime : </label> 
-			<input maxlength="9" type="text" id="isim" class="input1" />
-			<button id="ekle">Tabloya Ekle</button>
+			<input type="text" id="isim" class="input1" />
+			<button id="ekle">İşle</button>
 
 			<br/><br/><br/>
 
@@ -72,38 +109,69 @@
 			{
 				var ad = document.getElementById("isim");
 
-				function karistir(length) {
-				   var sonuc           = '';
-				   var karakterler       = ad.value;
-				   var karakteruzunlugu = karakterler.length;
-				   for ( var i = 0; i < length; i++ ) {
-				      sonuc += karakterler.charAt(Math.floor(Math.random() * karakteruzunlugu));
-				   }
-				   return sonuc;
-					}
+				function karistir(length) 
+				{
+				   	var sonuc            = '';
+				   	var karakterler      = ad.value;
+				   	var karakteruzunlugu = karakterler.length;
 
+				   	if(karakterler.length > 9)
+				   	{
+				   		document.getElementById("p1").innerHTML = "<b style='color:red;'>Max. 9 karakter!</b>";
+				   		document.getElementById("p2").innerHTML = "";
+						document.getElementById("p3").innerHTML = "";
+						document.getElementById("p4").innerHTML = "";
+						document.getElementById("p5").innerHTML = "";
+						document.getElementById("p6").innerHTML = "";
+						document.getElementById("p7").innerHTML = "";
+						document.getElementById("p8").innerHTML = "";
+						document.getElementById("p9").innerHTML = "";
+						document.getElementById("p10").innerHTML= "";
+				   	}
+
+				   	else
+				   	{
+					   	for ( var i = 0; i < length; i++ ) 
+					   	{
+					      	sonuc += karakterler.charAt(Math.floor(Math.random() * karakteruzunlugu));
+					   	}
+				   	}
+
+				   	return sonuc;
+				}
+
+				if(!ad.value == "")
+				{
 					document.getElementById("p1").innerHTML = "<b>Girdi</b> : " + ad.value;
-					document.getElementById("p2").innerHTML = "<b>1</b> Harfli : " + karistir(1);
-					document.getElementById("p3").innerHTML = "<b>2</b> Harfli : " + karistir(2);
-					document.getElementById("p4").innerHTML = "<b>3</b> Harfli : " + karistir(3);
-					document.getElementById("p5").innerHTML = "<b>4</b> Harfli : " + karistir(4);
-					document.getElementById("p6").innerHTML = "<b>5</b> Harfli : " + karistir(5);
-					document.getElementById("p7").innerHTML = "<b>6</b> Harfli : " + karistir(6);
-					document.getElementById("p8").innerHTML = "<b>7</b> Harfli : " + karistir(7);
-					document.getElementById("p9").innerHTML = "<b>8</b> Harfli : " + karistir(8);
-					document.getElementById("p10").innerHTML = "<b>9</b> Harfli : " + karistir(9);
+					document.getElementById("p2").innerHTML = "<b style='color:red;'>1</b> Harfli : " + karistir(1);
+					document.getElementById("p3").innerHTML = "<b style='color:red;'>2</b> Harfli : " + karistir(2);
+					document.getElementById("p4").innerHTML = "<b style='color:red;'>3</b> Harfli : " + karistir(3);
+					document.getElementById("p5").innerHTML = "<b style='color:red;'>4</b> Harfli : " + karistir(4);
+					document.getElementById("p6").innerHTML = "<b style='color:red;'>5</b> Harfli : " + karistir(5);
+					document.getElementById("p7").innerHTML = "<b style='color:red;'>6</b> Harfli : " + karistir(6);
+					document.getElementById("p8").innerHTML = "<b style='color:red;'>7</b> Harfli : " + karistir(7);
+					document.getElementById("p9").innerHTML = "<b style='color:red;'>8</b> Harfli : " + karistir(8);
+					document.getElementById("p10").innerHTML = "<b style='color:red;'>9</b> Harfli : " + karistir(9);
+					document.getElementById("p10").innerHTML = "";
 
-					$(".input1").keyup(function (){
-	  			if (this.value.match(/[^a-zA-Z]/g)){
-	    			this.value = this.value.replace(/[^a-zA-Z]/g,'');
-	  			}
-			});
-			}			
+					ad.value = "";
+				}
 
-			
+				else
+				{
+					document.getElementById("p1").innerHTML = "<b style='color:red;'>Min. 1 karakter!</b>";
+					document.getElementById("p2").innerHTML = "";
+					document.getElementById("p3").innerHTML = "";
+					document.getElementById("p4").innerHTML = "";
+					document.getElementById("p5").innerHTML = "";
+					document.getElementById("p6").innerHTML = "";
+					document.getElementById("p7").innerHTML = "";
+					document.getElementById("p8").innerHTML = "";
+					document.getElementById("p9").innerHTML = "";
+					document.getElementById("p10").innerHTML = "";
+				}
+			}
 
 		</script>
-
-
 	</body>
 </html>
