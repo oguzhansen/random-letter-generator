@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Kelime Türet</title>
+        <meta charset="utf-8">
+		<style type="text/css" >
+		body
+		{
+			background-image: url(img/bg.jpg);
+		 	background-repeat:no-repeat;
+			font-family:Arial;
+		}
+		
+		#turet
+		{
+			width:250px;
+			border:none;
+			padding:15px;
+			cursor:pointer;
+			transition:350ms ease-in-out;
+			opacity:0.6;
+			background:#4169e1;
+			color:white;
+		}
+		
+		#turet:hover
+		{
+			width:500px;
+			opacity:1;
+			background:#4169e1;
+		}
+		
+		#text
+		{
+			width:500px;
+			border:1px solid #4169e1;
+			border-radius:10px;
+			padding:12px;
+			background:white;
+			color:#4169e1;
+		}
+		
+		</style>
+    </head>
+    <body>
+		<center>
+		<br/><br/><br/><br/>
+		<h2 style="color:black; box-shadow: 3px 3px 4px #000; padding:15px; width:500px; " >Harfleri Karıştır</h2>
+		<form name="giris">
+			<input type="text" name="kelime" id="text" placeholder="Kelime Giriniz" onclick="karistir()"/> <br/><br/>
+			<button type="button" id="turet" onclick="karistir()">Harfleri Karıştır</button>
+			<p name="p1"></p>
+			<p name="p2"></p>
+			<p name="p3"></p>
+			<p name="p4"></p>
+			<p name="p5"></p>
+		</form>
+		<script type="text/javascript">
+		
+			function seckelime(kelime) {
+				var reg = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*+-]).{1,9}$/);
+				return reg.test(kelime);
+			};
+		
+			turet.onclick=function()
+			{
+				var kelimeform = document.forms.giris; // Or document.forms['login']
+				var ad = kelimeform.elements.kelime.value;
+				
+				if (seckelime(ad))
+				{
+					function karistir(length) {
+					   var result           = '';
+					   var characters       = ad;
+					   var charactersLength = characters.length;
+					   
+						for ( var i = 0; i < length; i++ ) 
+						{
+							result += characters.charAt(Math.floor(Math.random() * charactersLength));
+						}
+						
+						return result;
+					   
+					}
+					
+					document.write("<center><br/><br/><br/><br/><div style='font-family:Arial;'><b>Kelime : </b>" + ad + "<br/><br/>");
+					document.write("<span><b>1</b> Harfli : " + karistir(1) + "</span><br/><br/>");
+					document.write("<span><b>2</b> Harfli : " + karistir(2) + "</span><br/><br/>");
+					document.write("<span><b>3</b> Harfli : " + karistir(3) + "</span><br/><br/>");
+					document.write("<span><b>4</b> Harfli : " + karistir(4) + "</span></div></center>");
+				}
+				
+				else
+				{
+					document.write("<center><br/><br/><br/><br/><span style='font-family:Arial; color:red;'>Kelimeniz en az 1 en fazla 9 karakterden oluşabilir. <br/><br/>En az 1 büyük harf, 1 rakam ve 1 özel karakter bulunmalıdır!</span><br/><br/>");
+					document.write("<a href='index.html' style='font-family:Arial; text-decoration:none; color:green;' >Tekrar Dene </a></center>");
+				}
+			}
+			
+		</script>
+		</center>
+    </body>
+</html>
