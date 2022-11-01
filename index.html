@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Kelime Türet</title>
+        <title>randomletter</title>
         <meta charset="utf-8">
 		<style type="text/css" >
 		body
@@ -45,21 +45,15 @@
     <body>
 		<center>
 		<br/><br/><br/><br/>
-		<h2 style="color:black; box-shadow: 3px 3px 4px #000; padding:15px; width:500px; " >Harfleri Karıştır</h2>
+		<h2 style="color:black; box-shadow: 3px 3px 4px #000; padding:15px; width:500px; " >randomletter generator</h2>
 		<form name="giris">
-			<input type="text" name="kelime" id="text" placeholder="Kelime Giriniz" onclick="karistir()"/> <br/><br/>
-			<button type="button" id="turet" onclick="karistir()">Harfleri Karıştır</button>
-			<p name="p1"></p>
-			<p name="p2"></p>
-			<p name="p3"></p>
-			<p name="p4"></p>
-			<p name="p5"></p>
+			<input type="text" name="kelime" id="text" placeholder="enter word" onclick="karistir()"/> <br/><br/>
+			<button type="button" id="turet" onclick="karistir()">randomletter</button>
 		</form>
 		<script type="text/javascript">
 		
 			function seckelime(kelime) {
-				var reg = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*+-]).{1,9}$/);
-				return reg.test(kelime);
+				return kelime;
 			};
 		
 			turet.onclick=function()
@@ -83,17 +77,22 @@
 					   
 					}
 					
-					document.write("<center><br/><br/><br/><br/><div style='font-family:Arial;'><b>Kelime : </b>" + ad + "<br/><br/>");
-					document.write("<span><b>1</b> Harfli : " + karistir(1) + "</span><br/><br/>");
-					document.write("<span><b>2</b> Harfli : " + karistir(2) + "</span><br/><br/>");
-					document.write("<span><b>3</b> Harfli : " + karistir(3) + "</span><br/><br/>");
-					document.write("<span><b>4</b> Harfli : " + karistir(4) + "</span></div></center>");
+					document.write("<center><br/><br/><br/><br/><div style='font-family:Arial;'><b>word : </b>" + ad + "<br/><br/>");
+					document.write("<span><b>1</b> letter : " + karistir(1) + "</span><br/><br/>");
+					document.write("<span><b>2</b> letter : " + karistir(2) + "</span><br/><br/>");
+					document.write("<span><b>3</b> letter : " + karistir(3) + "</span><br/><br/>");
+					document.write("<span><b>4</b> letter : " + karistir(4) + "</span><br/><br/>");
+					document.write("<span><b>5</b> letter : " + karistir(5) + "</span><br/><br/>");
+					document.write("<span><b>6</b> letter : " + karistir(6) + "</span><br/><br/>");
+					document.write("<span><b>7</b> letter : " + karistir(7) + "</span></div><br/>");
+					document.write("<a href='index.html' style='font-family:Arial; text-decoration:none; color:green;' >done</a></center>");
+
 				}
 				
 				else
 				{
-					document.write("<center><br/><br/><br/><br/><span style='font-family:Arial; color:red;'>Kelimeniz en az 1 en fazla 9 karakterden oluşabilir. <br/><br/>En az 1 büyük harf, 1 rakam ve 1 özel karakter bulunmalıdır!</span><br/><br/>");
-					document.write("<a href='index.html' style='font-family:Arial; text-decoration:none; color:green;' >Tekrar Dene </a></center>");
+					document.write("<center><br/><br/><br/><br/><span style='font-family:Arial; color:red;'>error<br/></span><br/><br/>");
+					document.write("<a href='index.html' style='font-family:Arial; text-decoration:none; color:green;' >try again</a></center>");
 				}
 			}
 			
